@@ -29,7 +29,7 @@ y = subs(y,s,t);
 % nazad u matlab f-ju
 y_m = matlabFunction(y);
 hold on;
-fplot(y_m, xrange, 'k');
+fplot(y_m, xrange, 'g');
 hold off;
 xlabel('x');
 ylabel('y');
