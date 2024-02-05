@@ -2,7 +2,7 @@
 % x(t+h) = x(t) + h*f(t+h,x(t+h))
 % funkcija kao argumente prima f-ju f od t i x, pocetni trenutak t0,
 % pocetnu vrednost x0 i tacku do koje hocemo da plotujemo
-function [R, aproks] = Ojler_unazad(f, t0, x0, t_max)
+function [R, aproks_unazad] = Ojler_unazad(f, t0, x0, t_max)
 
 % zadajemo korak h (konfigurabilno)
 h = 0.01;
@@ -16,7 +16,6 @@ T = length(t_osa);
 while(length(aproks_unazad) < T)
     y = y + h*f(t,y);
     yp = y + h*f(t+h,y);
-    aproks_unapred = [aproks_unapred y];
     aproks_unazad = [aproks_unazad, yp];
     t = t + h;
 end
