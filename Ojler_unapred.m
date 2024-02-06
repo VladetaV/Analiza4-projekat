@@ -28,8 +28,7 @@ aproks_runge = x0;
 t_osa = t0:h:t_max;
 T = length(t_osa);
 while(length(aproks_runge)<T)
-    yp = y + h/2 * f(t,y);
-    y = y + h*f(t+h/2,yp);
+    y = y + h*f(t,y);
     aproks_runge = [aproks_runge y];
     t = t + h;
 end
@@ -37,7 +36,5 @@ end
 
 % red metode je 1 pa je p = 1
 p = 1;
-length(aproks(1:2:end))
-length(aproks_runge)
 R = (aproks(1:2:end) - aproks_runge)./(2^p - 1);
 

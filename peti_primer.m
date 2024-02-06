@@ -1,23 +1,24 @@
-function  prvi_primer()
+function peti_primer()
 
-% imamo zadat Kosijev problem: x' = -2*x + 3*exp(t)
-% x(0) = 3
-% resenje ovog problema je x(t) = 3*exp(-2t) + exp(t)
+% imamo zadat Kosijev problem: x' = t + x
+% x(0) = e - 1
+% resenje ovog problema je x(t) = exp(t+1)-t-1
 
-% sve cemo plot-ovati na intervalu [-5 5] sa korakom 0.01
+% sve cemo plot-ovati na intervalu [0 5] sa korakom 0.01
 
 % prvo izracunavamo egzaktno resenje 
 t_osa = 0:0.01:5;
-f = @(t,x) (-2).*x + 3.*exp(t);
-f_exact = @(t) 2.*exp(-2*t) + exp(t);
+f = @(t,x) t + x;
+f_exact = @(t) exp(t+1)-t-1;
 exact = f_exact(t_osa);
 
+
 % za iterativnu metodu cemo koristiti trideset iteracija
-iterativna_aproksimacija = iterativna(f,0,3,30);
-[R_unapred, unapred] = Ojler_unapred(f,0,3,5);
-[R_unazad, unazad] = Ojler_unazad(f,0,3,5);
-[R_modifikovan, modifikovan] = Ojler_modifikovan(f,0,3,5);
-[R_runge_kutta, runge_kutta] = Runge_Kutta(f,0,3,5);
+iterativna_aproksimacija = iterativna(f,0,exp(1) - 1 ,30);
+[R_unapred, unapred] = Ojler_unapred(f,0,exp(1) - 1,5);
+[R_unazad, unazad] = Ojler_unazad(f,0,exp(1) - 1,5);
+[R_modifikovan, modifikovan] = Ojler_modifikovan(f,0,exp(1) - 1,5);
+[R_runge_kutta, runge_kutta] = Runge_Kutta(f,0,exp(1) - 1,5);
 
 % racunamo razlike izmedju egzaktnog resenja i razlicitih metoda
 iterativna_abs = abs(iterativna_aproksimacija(t_osa)-exact);
@@ -27,7 +28,7 @@ modifikovan_abs = abs(modifikovan - exact);
 runge_kutta_abs = abs(runge_kutta - exact);
 
 % prvo plotujemo aproksimacije funkcije bez ikakvih ocena gresaka
-figure('Name', 'Aproksimacije')
+figure('Name','Aproksimacije')
 hold on
 plot(t_osa,iterativna_aproksimacija(t_osa),'color','m','LineWidth',2);
 plot(t_osa,exact,'color','r','LineWidth',2);
@@ -38,9 +39,8 @@ plot(t_osa,runge_kutta,'color','k','LineWidth',2);
 hold off
 legend('Iterativna','Analiticko resenje','Ojler unapred','Ojler unazad','Modifikovani Ojler','Metoda Runge-Kutta');
 
-% sada plotujemo apsolutne razlike izmedju aproksimacija i egzaktnog
-% resenja
-figure('Name', 'Apsolutne greske')
+% sada plotujemo apsolutne razlike izmedju aproksimacija i egzaktnog resenja
+figure('Name','Apsolutne greske')
 hold on
 plot(t_osa,iterativna_abs,'color','m','LineWidth',2)
 plot(t_osa,unapred_abs,'color','b','LineWidth',2);

@@ -14,6 +14,7 @@ t_osa = t0:h:t_max;
 T = length(t_osa);
 
 while(length(aproks_unazad) < T)
+    % prvo izracunavamo x(t+h) pomocu Ojlera unapred
     y = y + h*f(t,y);
     yp = y + h*f(t+h,y);
     aproks_unazad = [aproks_unazad, yp];
@@ -29,14 +30,13 @@ aproks_unazad_runge = x0;
 t_osa = t0:h:t_max;
 T = length(t_osa);
 while(length(aproks_unazad_runge)<T)
+    % prvo izracunavamo x(t+h) pomocu Ojlera unapred
     y = y + h*f(t,y);
     yp = y + h*f(t+h,y);
-    aproks_unazad_runge = [aproks_unazad_runge, yp];
+    aproks_unazad_runge = [aproks_unazad_runge yp];
     t = t + h;
 end
 
 % red metode je 1 pa je p = 1
 p = 1;
-length(aproks_unazad(1:2:end))
-length(aproks_unazad_runge)
 R = (aproks_unazad(1:2:end) - aproks_unazad_runge)./(2^p - 1);

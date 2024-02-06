@@ -51,6 +51,17 @@ plot(t_osa,runge_kutta_abs,'color','k','LineWidth',2);
 hold off
 legend('Iterativna','Ojler unapred', 'Ojler unazad', 'Modifikovani Ojler', 'Metoda Runge-Kutta')
 
+% plotujemo relativne greske
+figure('Name', 'Relativne greske')
+hold on
+plot(t_osa,iterativna_abs./abs(exact),'color','m','LineWidth',2)
+plot(t_osa,unapred_abs./abs(exact),'color','b','LineWidth',2);
+plot(t_osa,unazad_abs./abs(exact),'color','g','LineWidth',2);
+plot(t_osa,modifikovan_abs./abs(exact),'color','y','LineWidth',2);
+plot(t_osa,runge_kutta_abs./abs(exact),'color','k','LineWidth',2);
+hold off
+legend('Iterativna','Ojler unapred', 'Ojler unazad', 'Modifikovani Ojler', 'Metoda Runge-Kutta')
+
 % sada plotujemo Rungeove ocene gresaka
 figure('Name','Rungeova ocena greske')
 hold on

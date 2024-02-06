@@ -1,9 +1,9 @@
 % Metoda Runge-Kutta
-%    k1=h*f(x0+(i-1)*h,v(i));
-%    k2=h*f(x0+(i-1/2)*h,v(i)+k1/2);
-%    k3=h*f(x0+(i-1/2)*h,v(i)+k2/2);
-%    k4=h*f(x0+i*h,v(i)+k3);
-
+%    k1=h*f(t,x(t))
+%    k2=h*f(t+h/2,x(t)+k1/2)
+%    k3=h*f(t+h/2,x(t)+k2/2)
+%    k4=h*f(t+h,x(t)+k3)
+%    x(t+h)=x(t)+(k1+2*k2+2*k3+k4)/6
 function [R, aproks] = Runge_Kutta(f, t0, x0, t_max)
 h = 0.01;
 t = t0;
@@ -44,6 +44,4 @@ end
 
 % red metode je 4 pa je p = 4
 p = 4;
-length(aproks(1:2:end))
-length(aproks_runge)
 R = (aproks(1:2:end) - aproks_runge)./(2^p - 1);

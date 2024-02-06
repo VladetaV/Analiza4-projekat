@@ -1,6 +1,6 @@
 % iterativna (Pikarova) metoda za resavanje diferencijalne jednacine
-% kao ulaz imamo funkciju f(t,x), broj iteracija i interval na kojem
-% hocemo da plotujemo funkciju
+% kao ulaz imamo funkciju f(t,x), pocetni trenutak, pocetnu vrednost
+% i broj iteracija
 % rezultat je funkcija koja je resenje datog Kosijevog problema
 function y = iterativna(f, t0, x0, iterations)
 
@@ -9,7 +9,8 @@ function y = iterativna(f, t0, x0, iterations)
 % ne zaboravimo da je ovo funkcija od x i t !!!
 f = sym(f);
 
-% deklarisemo simbolicke promenljive t i x
+% deklarisemo simbolicke promenljive t, x i s --> s nam treba kako bismo
+% zamenili t u integralu
 syms s x t
 % menjamo t sa s kako bi u granicama integrala moglo da nam stoji t
 f = subs(f,t,s);
