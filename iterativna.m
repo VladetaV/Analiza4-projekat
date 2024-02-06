@@ -2,7 +2,7 @@
 % kao ulaz imamo funkciju f(t,x), broj iteracija i interval na kojem
 % hocemo da plotujemo funkciju
 % rezultat je funkcija koja je resenje datog Kosijevog problema
-function y = iterativna(f, t0, x0, iterations, xrange)
+function y = iterativna(f, t0, x0, iterations)
 
 % prevodimo obicnu matlab funkciju u simbolicku funkciju kako bismo
 % dobili simbolicku funkciju koju mozemo da integralimo
@@ -24,12 +24,6 @@ end
 
 % vracamo smenu s=t
 y = subs(y,s,t);
-% plotovanje rezultujuce funkcije
-% da bismo plotovali datu funkciju prvo je moramo pretvoriti iz simblolicke
-% nazad u matlab f-ju
-y_m = matlabFunction(y);
-hold on;
-fplot(y_m, xrange, 'g');
-hold off;
-xlabel('x');
-ylabel('y');
+% y vracamo iz simbolicke funkcije nazad u matlab f-ju
+y = matlabFunction(y);
+
