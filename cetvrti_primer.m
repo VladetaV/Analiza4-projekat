@@ -37,6 +37,18 @@ hold off
 legend('Iterativna','Analiticko resenje','Ojler unapred','Ojler unazad','Modifikovani Ojler','Metoda Runge-Kutta');
 
 
+% ispisivanje najbolje predstave efikasnosti metode
+iterativna_res = sum(iterativna_abs)/length(t_osa);
+unapred_res = sum(unapred_abs)/length(t_osa);
+unazad_res = sum(unapred_abs)/length(t_osa);
+modifikovan_res = sum(modifikovan_abs)/length(t_osa);
+runge_kutta_res = sum(runge_kutta_abs)/length(t_osa);
+fprintf("iterativna metoda: %f\n", iterativna_res);
+fprintf("Ojler unapred: %f\n", unapred_res);
+fprintf("Ojler unazad: %f\n", unazad_res);
+fprintf("Modifikovan Ojler: %f\n", modifikovan_res);
+fprintf("Metoda Runge-Kutta: %f\n", runge_kutta_res);
+
 % sada plotujemo Rungeove ocene gresaka
 figure('Name','Rungeova ocena greske')
 hold on
